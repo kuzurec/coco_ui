@@ -12,13 +12,16 @@ function App() {
           hello
         </Button>
         <Button
+          onClick={() => {alert("danger")}}
           btnType={ButtonType.Danger}
+          btnSize={ButtonSize.Small}
         >
           hello2
         </Button>
         <Button
           btnType={ButtonType.Link}
           href="https://www.baidu.com"
+          target="_blank"
         >
           hello3
         </Button>
