@@ -40,7 +40,7 @@
 }
 
 .btn-default {
-  @include button-style($body-color, $white, $gray-400, $white, $primary, $primary)
+  @include button-style($body-color, $white, $gray-400, $white, $primary, $primary);
 }
 
 .btn-link {
@@ -48,7 +48,15 @@
   text-decoration: none;
   color: $cyan;
   font-weight: $font-weight-normal;
-  &:hover{
+  &:hover {
     text-decoration: underline;
+  }
+  &:focus {
+    text-decoration: underline;
+  }
+  &:disabled,
+  &.disabled {
+    color: $secondary;
+    pointer-events: none;
   }
 }

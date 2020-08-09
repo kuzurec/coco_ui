@@ -1,17 +1,20 @@
 import React, { ButtonHTMLAttributes, AnchorHTMLAttributes }from 'react';
 import classNames from 'classnames';
 
-export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm'
-}
+// export enum ButtonSize {
+//   Large = 'lg',
+//   Small = 'sm'
+// }
 
-export enum ButtonType {
-  Primary = 'primary',
-  Default = 'default',
-  Danger = 'danger',
-  Link = 'link'
-}
+// export enum ButtonType {
+//   Primary = 'primary',
+//   Default = 'default',
+//   Danger = 'danger',
+//   Link = 'link'
+// }
+
+export type ButtonSize = 'lg' | 'sm';
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
 
 interface IButtonProps {
   className?: string;
@@ -22,6 +25,9 @@ interface IButtonProps {
   href?: string
 }
 
+/**
+ * 获取所有button和a元素上的自带属性
+ */
 type NativeButtonProps = IButtonProps & ButtonHTMLAttributes<HTMLElement>
 type AnchorButtonProps = IButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
@@ -39,10 +45,10 @@ function Button(props: ButtonProps) {
   const classes = classNames('btn', {
     [`btn-${btnType}`]: btnType,
     [`btn-${btnSize}`]: btnSize,
-    'disabled': (btnType === ButtonType.Link) && disabled
+    'disabled': (btnType === 'link') && disabled
   })
 
-  if((btnType === ButtonType.Link) && href) {
+  if((btnType === 'link') && href) {
     return (
       <a 
         href={href}
@@ -67,7 +73,7 @@ function Button(props: ButtonProps) {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default
+  btnType: 'default'
 }
 
 export default Button
